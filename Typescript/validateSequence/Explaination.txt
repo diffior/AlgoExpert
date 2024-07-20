@@ -1,0 +1,50 @@
+
+    Function Declaration:
+        The function isValidSubsequence is declared with two parameters:
+            array: an array of numbers.
+            sequence: another array of numbers that we want to check if it is a subsequence of array.
+
+    Copying the Sequence:
+        const modSequence = [...sequence] creates a shallow copy of the sequence array. This is done to avoid modifying the original sequence array during the function execution.
+
+    Iterating Over the Array:
+        for (let i = array.length -1; i >= 0; i--) starts a loop that iterates over the array from the last element to the first element (reverse order).
+
+    Checking for Matching Elements:
+        if (array[i] === modSequence[modSequence.length - 1]) checks if the current element of array matches the last element of modSequence.
+        If they match, modSequence.pop() removes the last element from modSequence.
+
+    Checking if the Sequence is Fully Matched:
+        if (!modSequence.length) return true; checks if modSequence is empty. If it is, it means all elements of the sequence have been found in the array in the correct order, so the function returns true.
+
+    Returning False if Not Matched:
+        If the loop completes and modSequence is not empty, it means the sequence is not a subsequence of array, so the function returns false.
+
+Key Points
+
+    Subsequence Definition: A subsequence is a sequence derived from another sequence by deleting some or no elements without changing the order of the remaining elements.
+    Reverse Iteration: The function iterates over the array in reverse order to efficiently match and remove elements from the modSequence.
+    Shallow Copy: The use of const modSequence = [...sequence] ensures that the original sequence array remains unchanged.
+
+Example
+
+Let's consider the sample input provided in the image:
+
+    array = [5, 1, 22, 25, 6, -1, 8, 10]
+    sequence = [1, 6, -1, 10]
+
+Execution Steps:
+
+    modSequence is initialized to [1, 6, -1, 10].
+    The loop starts from the end of array:
+        array[7] = 10 matches modSequence[3] = 10, so modSequence becomes [1, 6, -1].
+        array[6] = 8 does not match modSequence[2] = -1.
+        array[5] = -1 matches modSequence[2] = -1, so modSequence becomes [1, 6].
+        array[4] = 6 matches modSequence[1] = 6, so modSequence becomes [1].
+        array[3] = 25 does not match modSequence[0] = 1.
+        array[2] = 22 does not match modSequence[0] = 1.
+        array[1] = 1 matches modSequence[0] = 1, so modSequence becomes [].
+    Since modSequence is empty, the function returns true.
+
+This confirms that [1, 6, -1, 10] is a valid subsequence of [5, 1, 22, 25, 6, -1, 8, 10].
+Shareable 
